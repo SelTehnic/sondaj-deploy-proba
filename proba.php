@@ -9,7 +9,7 @@ $extensii = ['bcmath', 'ctype', 'curl', 'dom', 'fileinfo', 'filter', 'gd', 'intl
 $opcache = function_exists('opcache_get_status') ? @opcache_get_status(false) : false;
 
 echo json_encode([
-    'versiune_proba' => 1,
+    'versiune_proba' => 2,
     'sapi' => PHP_SAPI,
     'php' => PHP_VERSION,
     'server' => $_SERVER['SERVER_SOFTWARE'] ?? null,
