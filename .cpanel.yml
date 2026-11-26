@@ -1,0 +1,9 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/sondajservicii/public_html/
+    - /bin/cp proba.php $DEPLOYPATH
+    - /bin/cp proba.txt $DEPLOYPATH
+    - /bin/date -u > /home/sondajservicii/deploy-proba.log
+    - /usr/bin/id >> /home/sondajservicii/deploy-proba.log
+    - /usr/local/bin/ea-php85 -r 'echo PHP_SAPI, " ", PHP_VERSION, PHP_EOL;' >> /home/sondajservicii/deploy-proba.log 2>&1
