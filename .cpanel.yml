@@ -8,5 +8,5 @@ deployment:
     - /usr/bin/id >> /home/sondajservicii/deploy-proba.log
     - /usr/local/bin/ea-php85 -d error_log=/home/sondajservicii/deploy-proba-php.log -r 'echo PHP_SAPI, " ", PHP_VERSION, PHP_EOL;' >> /home/sondajservicii/deploy-proba.log 2>&1
     - /bin/echo "shell=$0 bash=$BASH_VERSION pwd=$PWD home=$HOME path=$PATH" >> /home/sondajservicii/deploy-proba.log
-    - for b in rsync git composer unzip tar curl mysql; do /bin/echo "$b: $(command -v $b || /bin/echo LIPSA)"; done >> /home/sondajservicii/deploy-proba.log 2>&1
+    - for b in rsync git composer unzip tar curl mysql; do /bin/echo "$b=$(command -v $b || /bin/echo LIPSA)"; done >> /home/sondajservicii/deploy-proba.log 2>&1
     - /bin/false || /bin/echo "operatorul || merge" >> /home/sondajservicii/deploy-proba.log
