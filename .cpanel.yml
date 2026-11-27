@@ -2,11 +2,8 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/sondajservicii/public_html/
-    - /bin/cp proba.php $DEPLOYPATH
     - /bin/cp proba.txt $DEPLOYPATH
     - /bin/date -u > /home/sondajservicii/deploy-proba.log
-    - /bin/mkdir -p /home/sondajservicii/.ssh && /bin/chmod 700 /home/sondajservicii/.ssh
-    - /bin/cp github_known_hosts /home/sondajservicii/.ssh/known_hosts && /bin/chmod 644 /home/sondajservicii/.ssh/known_hosts
-    - test -f /home/sondajservicii/.ssh/id_ed25519 || ssh-keygen -q -t ed25519 -N "" -C "sondaj-cpanel-deploy" -f /home/sondajservicii/.ssh/id_ed25519 >> /home/sondajservicii/deploy-proba.log 2>&1
-    - ssh-keygen -lf /home/sondajservicii/.ssh/id_ed25519.pub >> /home/sondajservicii/deploy-proba.log 2>&1
-    - /bin/ls -l /home/sondajservicii/.ssh >> /home/sondajservicii/deploy-proba.log 2>&1
+    - /bin/echo "uapi=$(command -v uapi || /bin/echo LIPSA)" >> /home/sondajservicii/deploy-proba.log
+    - /bin/bash /home/sondajservicii/repositories/sondaj-live/deploy/bootstrap-server.sh >> /home/sondajservicii/deploy-proba.log 2>&1
+    - /bin/ls -l /home/sondajservicii/sondaj-data >> /home/sondajservicii/deploy-proba.log 2>&1
