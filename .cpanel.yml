@@ -1,9 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/sondajservicii/public_html/
-    - /bin/cp proba.txt $DEPLOYPATH
-    - /bin/date -u > /home/sondajservicii/deploy-proba.log
-    - /bin/echo "uapi=$(command -v uapi || /bin/echo LIPSA)" >> /home/sondajservicii/deploy-proba.log
-    - /bin/bash /home/sondajservicii/repositories/sondaj-live/deploy/bootstrap-server.sh >> /home/sondajservicii/deploy-proba.log 2>&1
-    - /bin/ls -l /home/sondajservicii/sondaj-data >> /home/sondajservicii/deploy-proba.log 2>&1
+    - /bin/date -u > /home/sondajservicii/cont-proba.txt
+    - cd /home/sondajservicii/sondaj-app && /usr/local/bin/ea-php85 -d error_log=/home/sondajservicii/logs/deploy-php.log artisan sondaj:cont-proba --no-ansi >> /home/sondajservicii/cont-proba.txt 2>&1
